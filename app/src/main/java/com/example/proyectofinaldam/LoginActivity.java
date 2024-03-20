@@ -22,7 +22,7 @@ public class LoginActivity extends AppCompatActivity {
 
         usuario = findViewById(R.id.textLogin);
         contrasena = findViewById(R.id.textContrasena);
-        btnRegistrar = findViewById(R.id.btnRegistro);
+        btnRegistrar = findViewById(R.id.btnRegistrar);
         btnLogin = findViewById(R.id.btnLogin);
 
         final bbddHelper bbdd= new bbddHelper(getApplicationContext());
