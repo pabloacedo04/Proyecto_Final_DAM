@@ -3,6 +3,9 @@ package com.example.proyectofinaldam;
 public class Usuario {
     private String usr, contrasena;
 
+    public Usuario(){
+
+    }
     public Usuario(String usr, String contrasena){
         this.usr = usr;
         this.contrasena = contrasena;
