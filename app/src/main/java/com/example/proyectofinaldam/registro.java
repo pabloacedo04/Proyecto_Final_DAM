@@ -27,18 +27,21 @@ public class registro extends AppCompatActivity {
         contrasena2 = findViewById(R.id.tvContrasena2);
 
         btnRegistro.setOnClickListener(view ->{
-            if(usuario.getText().toString().equals("") ){
+            if(usuario.getText().toString().equals("")){
                 Toast.makeText(this, "Rellene todos los campos", Toast.LENGTH_LONG).show();
             }
             else if (contrasena.getText().toString().length()<6){
                 Toast.makeText(this, "La contraseña es demasiado corta, debe tener mínimo 6 caracteres", Toast.LENGTH_LONG).show();
             }
             else if (contrasena.getText().toString().equals(contrasena2.getText().toString())){
-                bbdd.agregarUsuario(usuario.getText().toString(), contrasena.getText().toString());
-                Toast.makeText(this, "Usuario añadido", Toast.LENGTH_LONG).show();
-
-                Intent i = new Intent(registro.this, LoginActivity.class);
-                startActivity(i);
+                if(!bbdd.existeUsuario(usuario.getText().toString(), this)){
+                    bbdd.agregarUsuario(usuario.getText().toString(), contrasena.getText().toString());
+                    Intent i = new Intent(registro.this, LoginActivity.class);
+                    startActivity(i);
+                }
+                else{
+                    Toast.makeText(this, "Ya hay otro usuario con ese nombre", Toast.LENGTH_LONG).show();
+                }
             }
             else{
                 Toast.makeText(this, "Las contraseñas no coinciden", Toast.LENGTH_LONG).show();

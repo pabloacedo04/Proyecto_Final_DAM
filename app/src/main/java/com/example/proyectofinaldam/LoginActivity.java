@@ -32,19 +32,23 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(this, "Faltan datos por rellenar", Toast.LENGTH_LONG).show();
             }
             else{
-                Usuario u = bbdd.devolverUsuario(usuario.getText().toString(), this);
-                if (u.getContrasena().equals(contrasena.getText().toString())){
-                    //Intent i = new Intent(LoginActivity.this, );
-                    //startActivity(i);
+                if (bbdd.existeUsuario(usuario.getText().toString(), this)){
+                    Usuario u = bbdd.devolverUsuario(usuario.getText().toString(), this);
+                    if (u.getContrasena().equals(contrasena.getText().toString())){
+                        Intent i = new Intent(LoginActivity.this, SeleccionJuego.class);
+                        startActivity(i);
+                    }
+                    else{
+                        Toast.makeText(this, "Contraseña incorrecta", Toast.LENGTH_LONG).show();
+                    }
+                }
+                else{  
+                    Toast.makeText(this, "No hay ningun usuario registrado con ese nombre", Toast.LENGTH_LONG).show();
                 }
             }
         });
 
         btnRegistrar.setOnClickListener(view -> {
-            /*
-                bbdd.agregarUsuario(usuario.getText().toString(), contrasena.getText().toString());
-                Toast.makeText(getApplicationContext(), "Usuario dado de alta", Toast.LENGTH_LONG).show();
-             */
             Intent i = new Intent(LoginActivity.this, registro.class);
             startActivity(i);
         });
