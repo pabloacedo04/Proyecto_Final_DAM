@@ -36,6 +36,7 @@ public class LoginActivity extends AppCompatActivity {
                     Usuario u = bbdd.devolverUsuario(usuario.getText().toString(), this);
                     if (u.getContrasena().equals(contrasena.getText().toString())){
                         Intent i = new Intent(LoginActivity.this, SeleccionJuego.class);
+                        i.putExtra("usuario", usuario.getText().toString());
                         startActivity(i);
                     }
                     else{
