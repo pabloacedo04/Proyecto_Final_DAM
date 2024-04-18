@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Arcade Adventure</string>
+    <string name="boton_reiniciar">Reiniciar</string>
+    <string name="boton_cerrar">Salir</string>
 </resources>
