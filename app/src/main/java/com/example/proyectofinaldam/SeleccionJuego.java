@@ -26,21 +26,23 @@ public class SeleccionJuego extends AppCompatActivity {
         Bundle recibo = getIntent().getExtras();
         String usuario = recibo.getString("usuario");
 
-        prueba.setText("Usuario: "+usuario);
-
         juego1.setOnClickListener(view -> {
-            Toast.makeText(this, "Activity Juego 1", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(this, Memory.class);
-            startActivity(intent);
+            /*
+            Intent i = new Intent(this, Memory.class);
+            i.putExtra("usuario", usuario);
+            startActivity(i);
+            */
         });
 
         juego2.setOnClickListener(view -> {
             Intent i = new Intent(SeleccionJuego.this, Memory.class);
+            i.putExtra("usuario", usuario);
             startActivity(i);
         });
 
         juego3.setOnClickListener(view -> {
             Intent i = new Intent(SeleccionJuego.this, Sudoku.class);
+            i.putExtra("usuario", usuario);
             startActivity(i);
         });
     }
