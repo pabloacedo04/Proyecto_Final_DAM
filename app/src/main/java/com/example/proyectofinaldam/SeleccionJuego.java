@@ -35,7 +35,8 @@ public class SeleccionJuego extends AppCompatActivity {
         });
 
         juego2.setOnClickListener(view -> {
-            Toast.makeText(this, "Activity Juego 2", Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(SeleccionJuego.this, memory.class);
+            startActivity(i);
         });
 
         juego3.setOnClickListener(view -> {
