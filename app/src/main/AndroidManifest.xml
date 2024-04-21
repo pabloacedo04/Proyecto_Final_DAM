@@ -16,14 +16,14 @@
             android:name=".Sudoku"
             android:exported="false" />
         <activity
-            android:name=".memory"
+            android:name=".Memory"
             android:exported="false" />
         <activity
             android:name=".SeleccionJuego"
             android:exported="false"
             android:theme="@style/AppTheme2" />
         <activity
-            android:name=".registro"
+            android:name=".Registro"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"

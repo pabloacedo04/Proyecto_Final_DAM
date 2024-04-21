@@ -8,9 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.sql.Time;
-
-public class registro extends AppCompatActivity {
+public class Registro extends AppCompatActivity {
 
     Button btnRegistro;
     EditText usuario, contrasena, contrasena2;
@@ -36,7 +34,7 @@ public class registro extends AppCompatActivity {
             else if (contrasena.getText().toString().equals(contrasena2.getText().toString())){
                 if(!bbdd.existeUsuario(usuario.getText().toString(), this)){
                     bbdd.agregarUsuario(usuario.getText().toString(), contrasena.getText().toString());
-                    Intent i = new Intent(registro.this, LoginActivity.class);
+                    Intent i = new Intent(Registro.this, LoginActivity.class);
                     startActivity(i);
                 }
                 else{

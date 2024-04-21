@@ -50,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         btnRegistrar.setOnClickListener(view -> {
-            Intent i = new Intent(LoginActivity.this, registro.class);
+            Intent i = new Intent(LoginActivity.this, Registro.class);
             startActivity(i);
         });
 
