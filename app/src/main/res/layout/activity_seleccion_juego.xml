@@ -12,33 +12,61 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:layout_gravity="center"
-        android:text="TextView"
+        android:text="Selección de juego"
         android:textColor="@color/lightblue"
         android:textSize="33sp" />
-
 
     <ImageButton
         android:id="@+id/juego1"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginTop="32dp"
-        android:layout_gravity="center">
-    </ImageButton>
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        tools:ignore="SpeakableTextPresentCheck"></ImageButton>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Juego 1"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textColor="@color/black">
+    </TextView>
 
     <ImageButton
         android:id="@+id/juego2"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginTop="32dp"
-        android:layout_gravity="center">
-    </ImageButton>
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/memory1"
+        tools:ignore="SpeakableTextPresentCheck"></ImageButton>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Memory"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textColor="@color/black">
+    </TextView>
 
     <ImageButton
         android:id="@+id/juego3"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginTop="32dp"
-        android:layout_gravity="center">
-    </ImageButton>
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/sudoku"
+        tools:ignore="SpeakableTextPresentCheck"></ImageButton>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sudoku"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textColor="@color/black">
+    </TextView>
 
 </LinearLayout>
