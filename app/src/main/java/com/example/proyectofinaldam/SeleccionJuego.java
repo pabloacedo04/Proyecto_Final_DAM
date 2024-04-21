@@ -40,7 +40,7 @@ public class SeleccionJuego extends AppCompatActivity {
         });
 
         juego3.setOnClickListener(view -> {
-            Intent i = new Intent(SeleccionJuego.this, sudoku.class);
+            Intent i = new Intent(SeleccionJuego.this, Sudoku.class);
             startActivity(i);
         });
     }
