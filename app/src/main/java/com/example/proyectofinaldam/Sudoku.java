@@ -5,12 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class Sudoku extends AppCompatActivity {
 
@@ -32,25 +32,24 @@ public class Sudoku extends AppCompatActivity {
                 if (numero>9) numero=1;
                 btn.setText(String.valueOf(numero));
                 if (terminado()){
-                    if (victoria()){
-                        tv.setText("Ganaste");
-                    }
-                    else{
-                        tv.setText("Hay algún error");
-                    }
+                    //Codigo para cuando gane
                 }
             });
         }
     }
     Celda[][] tablero;
     TableLayout tl;
-    TextView tv;
     LinearLayout linearLayout;
     String ej;
+    TextView cuentaSegundos;
+    int seconds = 0;
+    boolean isRunning = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sudoku);
+        startTimer();
+
         ej = "? 5 4 3 ? 6 ? ? 2 "+
              "? 6 ? 7 5 4 3 8 ? "+
              "7 9 3 ? ? 8 6 4 5 "+
@@ -77,11 +76,15 @@ public class Sudoku extends AppCompatActivity {
         }
         tl.setShrinkAllColumns(true);
         tl.setStretchAllColumns(true);
-        tv = new TextView(this);
+        cuentaSegundos = new TextView(this);
+        cuentaSegundos.setTextColor(Color.RED);
+        cuentaSegundos.setTextSize(30);
+        cuentaSegundos.setPadding(300,0,0,0);
         linearLayout = new LinearLayout(this);
+        linearLayout.addView(cuentaSegundos);
         linearLayout.addView(tl);
-        linearLayout.addView(tv);
         linearLayout.setOrientation(LinearLayout.VERTICAL);
+        linearLayout.setPadding(0, 250, 0, 20);
         setContentView(linearLayout);
     }
 
@@ -121,5 +124,22 @@ public class Sudoku extends AppCompatActivity {
             }
         }
         return true;
+    }
+
+    private void startTimer() {
+        isRunning = true;
+        final Handler handler = new Handler();
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                if (isRunning) {
+                    // Actualiza el TextView con los segundos transcurridos
+                    cuentaSegundos.setText("Segundos: "+seconds);
+                    seconds++;
+                    // Ejecuta este Runnable cada segundo (1000 milisegundos)
+                    handler.postDelayed(this, 1000);
+                }
+            }
+        });
     }
 }
