@@ -32,11 +32,12 @@ public class Sudoku extends AppCompatActivity {
                 if (numero>9) numero=1;
                 btn.setText(String.valueOf(numero));
                 if (terminado()){
-                    //Codigo para cuando gane
+                    bbddHelper.agregarPuntuacion("", 3, seconds);
                 }
             });
         }
     }
+    bbddHelper bbddHelper = new bbddHelper(this);
     Celda[][] tablero;
     TableLayout tl;
     LinearLayout linearLayout;
@@ -44,14 +45,20 @@ public class Sudoku extends AppCompatActivity {
     TextView cuentaSegundos;
     int seconds = 0;
     boolean isRunning = false;
-
     Button btnPausar;
     Button btnSeguir;
+
+    Bundle recibo;
+    String usuario;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sudoku);
         startTimer();
+
+        recibo = getIntent().getExtras();
+        usuario = recibo.getString("usuario");
 
         ej = "? 5 4 3 ? 6 ? ? 2 "+
              "? 6 ? 7 5 4 3 8 ? "+

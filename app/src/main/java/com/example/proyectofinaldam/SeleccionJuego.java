@@ -10,8 +10,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SeleccionJuego extends AppCompatActivity {
-
-    TextView prueba;
     ImageButton juego1, juego2, juego3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +20,6 @@ public class SeleccionJuego extends AppCompatActivity {
         juego2 = findViewById(R.id.juego2);
         juego3 = findViewById(R.id.juego3);
 
-        prueba = findViewById(R.id.textView);
         Bundle recibo = getIntent().getExtras();
         String usuario = recibo.getString("usuario");
 
