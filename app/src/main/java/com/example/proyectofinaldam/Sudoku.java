@@ -44,6 +44,9 @@ public class Sudoku extends AppCompatActivity {
     TextView cuentaSegundos;
     int seconds = 0;
     boolean isRunning = false;
+
+    Button btnPausar;
+    Button btnSeguir;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,15 +79,50 @@ public class Sudoku extends AppCompatActivity {
         }
         tl.setShrinkAllColumns(true);
         tl.setStretchAllColumns(true);
+        tl.setPadding(0,40,0,70);
+
         cuentaSegundos = new TextView(this);
         cuentaSegundos.setTextColor(Color.RED);
         cuentaSegundos.setTextSize(30);
         cuentaSegundos.setPadding(300,0,0,0);
+
+        btnPausar = new Button(this);
+        btnPausar.setText("Pausar");
+        btnPausar.setTextSize(16);
+        btnPausar.setTextColor(Color.BLACK);
+        btnPausar.setBackgroundColor(Color.RED);
+        btnPausar.setHeight(10);
+        btnPausar.setOnClickListener(view -> {
+            isRunning = false;
+            for(int i = 0; i<9; i++){
+                for (int j=0; j<9; j++){
+                    tablero[i][j].btn.setEnabled(false);
+                }
+            }
+        });
+
+        btnSeguir = new Button(this);
+        btnSeguir.setText("Continuar");
+        btnSeguir.setTextColor(Color.BLACK);
+        btnSeguir.setBackgroundColor(Color.RED);
+        btnSeguir.setTextSize(16);
+        btnSeguir.setHeight(10);
+        btnSeguir.setOnClickListener(view -> {
+            startTimer();
+            for(int i = 0; i<9; i++){
+                for (int j=0; j<9; j++){
+                    tablero[i][j].btn.setEnabled(true);
+                }
+            }
+        });
+
         linearLayout = new LinearLayout(this);
         linearLayout.addView(cuentaSegundos);
         linearLayout.addView(tl);
+        linearLayout.addView(btnPausar);
+        linearLayout.addView(btnSeguir);
         linearLayout.setOrientation(LinearLayout.VERTICAL);
-        linearLayout.setPadding(0, 250, 0, 20);
+        linearLayout.setPadding(0, 150, 0, 20);
         setContentView(linearLayout);
     }
 
