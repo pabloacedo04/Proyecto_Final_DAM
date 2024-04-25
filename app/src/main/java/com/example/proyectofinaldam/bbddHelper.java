@@ -9,6 +9,7 @@ public class bbddHelper extends SQLiteOpenHelper {
     private static final int VERSION = 1;
     private static final String NOMBRE_BBDD = "proyecto.db";
     private static final String TABLA_USUARIOS = "CREATE TABLE T_USUARIOS(usr text primary key, pass text)";
+    private static final String TABLA_JUEGOS = "CREATE TABLE T_JUEGOS(usr text, juego integer, puntuacion integer)";
     public bbddHelper(Context context) {
         super(context, NOMBRE_BBDD, null, VERSION);
     }
@@ -16,11 +17,14 @@ public class bbddHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(TABLA_USUARIOS);
+        sqLiteDatabase.execSQL(TABLA_JUEGOS);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("DROP table if exists t_usuarios");
+        sqLiteDatabase.execSQL(TABLA_USUARIOS);
+        sqLiteDatabase.execSQL("DROP table if exists t_juegos");
         sqLiteDatabase.execSQL(TABLA_USUARIOS);
     }
 
@@ -62,6 +66,14 @@ public class bbddHelper extends SQLiteOpenHelper {
         }
 
         return usuario;
+    }
+
+    public void agregarPuntuacion(String usr, int juego, int punt){
+        SQLiteDatabase bbdd = getWritableDatabase();
+        if (bbdd!=null){
+            bbdd.execSQL("INSERT INTO t_juegos VALUES ('"+usr+"','"+juego+"','"+punt+"');");
+            bbdd.close();
+        }
     }
 
 }
