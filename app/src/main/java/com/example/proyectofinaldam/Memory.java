@@ -23,12 +23,17 @@ public class Memory extends Activity {
     ArrayList<Integer> arrayDesordenado;
     ImageButton primero;
     boolean bloqueo = false;
+    bbddHelper helper = new bbddHelper(getApplicationContext());
     final Handler handler = new Handler();
+    Bundle recibo;
+    String usuario;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_memory);
         init();
+        recibo = getIntent().getExtras();
+        usuario = recibo.getString("usuario");
     }
 
     private void cargarTablero(){
@@ -137,6 +142,7 @@ public class Memory extends Activity {
                 if(aciertos == imagenes.length){
                     Toast toast = Toast.makeText(getApplicationContext(), "Has ganado!!", Toast.LENGTH_LONG);
                     toast.show();
+                    helper.agregarPuntuacion(usuario, 2, puntuacion);
                 }
             } else {
                 handler.postDelayed(new Runnable() {
