@@ -46,12 +46,14 @@
         android:layout_marginHorizontal="32dp"
         android:hint="Contraseña"
         android:textColorHint="@color/grey"
-        app:endIconMode="password_toggle"
+        app:passwordToggleTint="@color/teal_700"
+        app:passwordToggleEnabled="true"
         app:endIconTint="@color/teal_700">
         <EditText
             android:id="@+id/tvContrasena"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textPassword"
             android:textColor="@color/black">
         </EditText>
     </com.google.android.material.textfield.TextInputLayout>
@@ -63,12 +65,14 @@
         android:layout_marginHorizontal="32dp"
         android:hint="Repetir Contraseña"
         android:textColorHint="@color/grey"
-        app:endIconMode="password_toggle"
-        app:endIconTint="@color/teal_700">
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/teal_700">
+
         <EditText
             android:id="@+id/tvContrasena2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textPassword"
             android:textColor="@color/black">
         </EditText>
     </com.google.android.material.textfield.TextInputLayout>
