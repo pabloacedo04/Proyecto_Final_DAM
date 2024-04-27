@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Sudoku extends AppCompatActivity {
 
@@ -32,7 +33,9 @@ public class Sudoku extends AppCompatActivity {
                 if (numero>9) numero=1;
                 btn.setText(String.valueOf(numero));
                 if (terminado()){
-                    bbddHelper.agregarPuntuacion("", 3, seconds);
+                    isRunning = false;
+                    Toast.makeText(Sudoku.this, "Has ganado!", Toast.LENGTH_SHORT).show();
+                    bbddHelper.agregarPuntuacion(usuario, 3, seconds);
                 }
             });
         }

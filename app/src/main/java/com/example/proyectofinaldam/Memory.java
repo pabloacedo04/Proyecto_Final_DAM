@@ -23,7 +23,7 @@ public class Memory extends Activity {
     ArrayList<Integer> arrayDesordenado;
     ImageButton primero;
     boolean bloqueo = false;
-    bbddHelper helper = new bbddHelper(getApplicationContext());
+    bbddHelper helper;
     final Handler handler = new Handler();
     Bundle recibo;
     String usuario;
@@ -32,6 +32,7 @@ public class Memory extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_memory);
         init();
+        helper = new bbddHelper(getApplicationContext());
         recibo = getIntent().getExtras();
         usuario = recibo.getString("usuario");
     }

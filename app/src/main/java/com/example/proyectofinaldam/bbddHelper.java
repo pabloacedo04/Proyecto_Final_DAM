@@ -14,6 +14,9 @@ public class bbddHelper extends SQLiteOpenHelper {
         super(context, NOMBRE_BBDD, null, VERSION);
     }
 
+    public int getVersion(){
+        return VERSION;
+    }
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(TABLA_USUARIOS);
@@ -71,7 +74,8 @@ public class bbddHelper extends SQLiteOpenHelper {
     public void agregarPuntuacion(String usr, int juego, int punt){
         SQLiteDatabase bbdd = getWritableDatabase();
         if (bbdd!=null){
-            bbdd.execSQL("INSERT INTO t_juegos VALUES ('"+usr+"','"+juego+"','"+punt+"');");
+            String sql = "INSERT INTO t_juegos (usr, juego, puntuacion) VALUES (?, ?, ?)";
+            bbdd.execSQL(sql, new Object[]{usr, juego, punt});
             bbdd.close();
         }
     }
