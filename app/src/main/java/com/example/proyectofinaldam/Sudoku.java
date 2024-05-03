@@ -6,6 +6,8 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Gravity;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
@@ -87,6 +89,7 @@ public class Sudoku extends AppCompatActivity {
             }
             tl.addView(tr);
         }
+
         tl.setShrinkAllColumns(true);
         tl.setStretchAllColumns(true);
         tl.setPadding(0,40,0,70);
@@ -94,7 +97,6 @@ public class Sudoku extends AppCompatActivity {
         cuentaSegundos = new TextView(this);
         cuentaSegundos.setTextColor(Color.RED);
         cuentaSegundos.setTextSize(30);
-        cuentaSegundos.setPadding(300,0,0,0);
 
         btnPausar = new Button(this);
         btnPausar.setText("Pausar");
@@ -109,9 +111,12 @@ public class Sudoku extends AppCompatActivity {
                     tablero[i][j].btn.setEnabled(false);
                 }
             }
+            btnSeguir.setEnabled(true);
+            btnPausar.setEnabled(false);
         });
 
         btnSeguir = new Button(this);
+        btnSeguir.setEnabled(false);
         btnSeguir.setText("Continuar");
         btnSeguir.setTextColor(Color.BLACK);
         btnSeguir.setBackgroundColor(Color.RED);
@@ -124,7 +129,20 @@ public class Sudoku extends AppCompatActivity {
                     tablero[i][j].btn.setEnabled(true);
                 }
             }
+            btnSeguir.setEnabled(false);
+            btnPausar.setEnabled(true);
         });
+
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+        );
+        layoutParams.gravity = Gravity.CENTER_HORIZONTAL;
+        layoutParams.topMargin = 20;
+
+        btnPausar.setLayoutParams(layoutParams);
+        btnSeguir.setLayoutParams(layoutParams);
+        cuentaSegundos.setLayoutParams(layoutParams);
 
         linearLayout = new LinearLayout(this);
         linearLayout.addView(cuentaSegundos);
