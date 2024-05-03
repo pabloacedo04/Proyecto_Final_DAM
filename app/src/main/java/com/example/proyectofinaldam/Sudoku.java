@@ -92,7 +92,7 @@ public class Sudoku extends AppCompatActivity {
 
         tl.setShrinkAllColumns(true);
         tl.setStretchAllColumns(true);
-        tl.setPadding(0,40,0,70);
+        tl.setPadding(0,40,0,30);
 
         cuentaSegundos = new TextView(this);
         cuentaSegundos.setTextColor(Color.RED);
@@ -138,7 +138,7 @@ public class Sudoku extends AppCompatActivity {
                 ViewGroup.LayoutParams.WRAP_CONTENT
         );
         layoutParams.gravity = Gravity.CENTER_HORIZONTAL;
-        layoutParams.topMargin = 20;
+        layoutParams.topMargin = 30;
 
         btnPausar.setLayoutParams(layoutParams);
         btnSeguir.setLayoutParams(layoutParams);
@@ -150,7 +150,7 @@ public class Sudoku extends AppCompatActivity {
         linearLayout.addView(btnPausar);
         linearLayout.addView(btnSeguir);
         linearLayout.setOrientation(LinearLayout.VERTICAL);
-        linearLayout.setPadding(0, 150, 0, 20);
+        linearLayout.setPadding(0, 100, 0, 0);
         setContentView(linearLayout);
     }
 
