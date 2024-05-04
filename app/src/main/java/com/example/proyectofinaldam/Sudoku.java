@@ -15,6 +15,8 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Random;
+
 public class Sudoku extends AppCompatActivity {
 
     public class Celda {
@@ -46,7 +48,7 @@ public class Sudoku extends AppCompatActivity {
     Celda[][] tablero;
     TableLayout tl;
     LinearLayout linearLayout;
-    String ej;
+    String [] ej;
     TextView cuentaSegundos;
     int seconds = 0;
     boolean isRunning = false;
@@ -56,6 +58,7 @@ public class Sudoku extends AppCompatActivity {
     Bundle recibo;
     String usuario;
 
+    int num;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,17 +68,110 @@ public class Sudoku extends AppCompatActivity {
         recibo = getIntent().getExtras();
         usuario = recibo.getString("usuario");
 
-        ej = "? 5 4 3 ? 6 ? ? 2 "+
-             "? 6 ? 7 5 4 3 8 ? "+
-             "7 9 3 ? ? 8 6 4 5 "+
-             "6 2 ? 4 ? ? 8 5 ? "+
-             "? 3 ? ? 8 ? ? ? ? "+
-             "? ? ? 5 ? ? ? ? 3 "+
-             "9 8 6 2 ? 5 ? 3 4 "+
-             "2 7 ? ? 4 3 5 ? ? "+
-             "? ? ? ? 7 ? ? ? 6 ";
+        ej = new String[10];
+        ej[0] = "? 5 4 3 ? 6 ? ? 2 "+
+                "? 6 ? 7 5 4 3 8 ? "+
+                "7 9 3 ? ? 8 6 4 5 "+
+                "6 2 ? 4 ? ? 8 5 ? "+
+                "? 3 ? ? 8 ? ? ? ? "+
+                "? ? ? 5 ? ? ? ? 3 "+
+                "9 8 6 2 ? 5 ? 3 4 "+
+                "2 7 ? ? 4 3 5 ? ? "+
+                "? ? ? ? 7 ? ? ? 6 ";
 
-        String [] numeros = ej.split(" ");
+        ej[1] = "? 7 6 9 ? 2 3 ? ? "+
+                "? 2 4 3 ? 7 ? ? 5 "+
+                "8 ? ? 6 4 ? 7 ? ? "+
+                "? ? ? 5 ? ? ? 4 6 "+
+                "? 9 ? ? ? 6 ? 2 8 "+
+                "? 4 5 8 2 ? ? ? 7 "+
+                "? 5 7 ? ? ? ? ? ? "+
+                "? ? 3 ? 5 4 8 ? ? "+
+                "2 ? ? ? ? ? ? ? 3 ";
+
+        ej[2] = "? 8 3 5 9 ? 2 6 1 "+
+                "5 2 4 ? 7 ? ? ? 8 "+
+                "6 ? 1 3 2 ? 5 ? 7 "+
+                "? 5 ? 7 3 ? ? ? 4 "+
+                "3 ? 7 ? 6 ? 8 5 2 "+
+                "2 ? 9 ? 8 ? ? ? ? "+
+                "4 1 ? 6 5 ? 3 ? ? "+
+                "8 ? 6 ? 4 ? ? 7 5 "+
+                "? 7 ? ? 1 ? 4 ? ? ";
+
+        ej[3] = "? 7 ? ? 1 4 8 ? 9 "+
+                "? ? ? ? ? 7 6 ? 1 "+
+                "? ? ? 6 8 ? 7 5 3 "+
+                "? 9 ? ? ? 8 2 ? 7 "+
+                "3 ? 5 7 4 6 9 1 8 "+
+                "7 ? ? 2 9 3 ? ? 5 "+
+                "2 ? ? ? ? 5 ? 8 6 "+
+                "5 ? 7 8 6 ? 3 ? 4 "+
+                "? 6 8 4 ? ? ? 7 2 ";
+
+        ej[4] = "? 8 ? ? ? 7 4 9 3 "+
+                "4 ? ? 9 6 ? ? ? 7 "+
+                "? 9 ? 8 ? ? ? ? 5 "+
+                "5 ? ? ? 3 4 2 ? 6 "+
+                "? ? ? 6 8 ? 3 7 ? "+
+                "3 ? 8 2 ? ? 5 ? ? "+
+                "? ? ? 4 ? ? 7 3 8 "+
+                "2 ? 5 ? ? ? ? 4 ? "+
+                "8 ? 7 ? ? 6 9 5 2 ";
+
+        ej[5] = "? ? ? 3 ? ? ? 7 8 "+
+                "? ? 6 ? ? ? 3 4 ? "+
+                "? ? ? 6 5 4 2 ? ? "+
+                "6 2 ? 5 8 ? 7 ? 4 "+
+                "4 ? 8 ? ? ? ? 3 6 "+
+                "? ? ? 7 ? ? ? 8 2 "+
+                "? ? ? ? ? ? ? 5 3 "+
+                "2 ? 9 8 3 5 4 ? ? "+
+                "? 5 7 ? ? 9 ? ? ? ";
+
+        ej[6] = "? 7 ? ? ? 8 2 3 6 "+
+                "4 ? ? 6 ? 3 ? ? ? "+
+                "? ? ? ? ? ? ? ? ? "+
+                "? ? ? 5 ? 2 3 7 8 "+
+                "? 6 ? ? ? 7 5 4 ? "+
+                "? 8 ? ? ? ? ? ? 2 "+
+                "? ? 7 ? ? 6 9 ? 4 "+
+                "? 5 6 3 2 ? 7 ? ? "+
+                "8 ? 2 ? ? ? ? ? ? ";
+
+        ej[7] = "? 4 6 7 ? 2 3 ? ? "+
+                "3 1 ? ? ? 8 2 9 ? "+
+                "? ? ? 3 4 9 ? ? ? "+
+                "2 7 9 ? ? 5 ? ? ? "+
+                "? ? ? ? 9 3 ? 1 2 "+
+                "? ? 4 2 8 7 6 5 ? "+
+                "7 6 ? 5 ? ? 9 3 ? "+
+                "? 9 ? ? 3 6 5 2 7 "+
+                "? 2 3 9 7 1 4 6 ? ";
+
+        ej[8] = "? ? 2 5 ? ? ? ? 8 "+
+                "3 ? ? ? ? 2 ? 5 ? "+
+                "? 9 ? ? 6 4 7 3 ? "+
+                "4 ? ? ? 7 5 ? 8 6 "+
+                "6 2 ? 4 ? ? ? 7 5 "+
+                "? ? 7 ? ? ? 4 ? 3 "+
+                "? 7 8 1 ? 6 ? ? ? "+
+                "? 3 ? 2 8 ? ? ? ? "+
+                "2 ? ? 3 ? ? ? 4 7 ";
+
+        ej[9] = "? 4 8 6 ? ? 2 ? ? "+
+                "? ? 2 ? ? ? ? ? ? "+
+                "? 9 ? 5 ? 2 6 ? ? "+
+                "? 7 6 3 5 ? ? ? 2 "+
+                "2 ? 4 ? ? ? 5 3 8 "+
+                "? 3 ? 4 ? ? ? 7 ? "+
+                "? 2 5 ? 3 ? 8 6 ? "+
+                "? 8 3 7 4 ? ? ? 5 "+
+                "? ? 7 ? ? ? ? ? 1 ";
+
+        Random random = new Random();
+        num = random.nextInt(10);
+        String [] numeros = ej[num].split(" ");
 
         tablero = new Celda[9][9];
         tl = new TableLayout(this);
