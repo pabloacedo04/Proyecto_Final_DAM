@@ -183,7 +183,7 @@ public class Memory extends Activity {
                     tablero[i].setImageResource(fondo);
                 }
             }
-        }, 500);
+        }, 1500);
         for(int i=0; i<tablero.length; i++) {
             final int j = i;
             tablero[i].setEnabled(true);
