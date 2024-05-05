@@ -3,10 +3,11 @@ package com.example.proyectofinaldam;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SeleccionJuego extends AppCompatActivity {
@@ -49,4 +50,22 @@ public class SeleccionJuego extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.action_puntuaciones:
+                    Toast.makeText(this, "Ver puntuaciones", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.action_cambiarPass:
+                    Toast.makeText(this, "Cambiar contraseña", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.action_cerrarSesion:
+                    Intent i = new Intent(SeleccionJuego.this, LoginActivity.class);
+                    startActivity(i);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 }

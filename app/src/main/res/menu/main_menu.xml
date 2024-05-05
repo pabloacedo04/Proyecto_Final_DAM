@@ -2,17 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/puntuaciones"
+        android:id="@+id/action_puntuaciones"
         android:title="Ver Puntuaciones">
     </item>
 
     <item
-        android:id="@+id/cambiarPass"
+        android:id="@+id/action_cambiarPass"
         android:title="Cambiar Contraseña">
     </item>
 
     <item
-        android:id="@+id/cerrarSesion"
+        android:id="@+id/action_cerrarSesion"
         android:title="Cerrar Sesión">
     </item>
 
