@@ -52,6 +52,7 @@ public class LoginActivity extends AppCompatActivity {
 
         btnRegistrar.setOnClickListener(view -> {
             Intent i = new Intent(LoginActivity.this, Registro.class);
+            i.putExtra("cambioContrasena", "no");
             startActivity(i);
         });
 

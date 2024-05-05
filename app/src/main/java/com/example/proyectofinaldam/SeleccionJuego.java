@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class SeleccionJuego extends AppCompatActivity {
     ImageButton juego1, juego2, juego3;
+    String usuario;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +23,7 @@ public class SeleccionJuego extends AppCompatActivity {
         juego3 = findViewById(R.id.juego3);
 
         Bundle recibo = getIntent().getExtras();
-        String usuario = recibo.getString("usuario");
+        usuario = recibo.getString("usuario");
 
         juego1.setOnClickListener(view -> {
             /*
@@ -58,11 +59,14 @@ public class SeleccionJuego extends AppCompatActivity {
                     Toast.makeText(this, "Ver puntuaciones", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.action_cambiarPass:
-                    Toast.makeText(this, "Cambiar contraseña", Toast.LENGTH_SHORT).show();
+                    Intent i2 = new Intent(SeleccionJuego.this, Registro.class);
+                    i2.putExtra("usuario", usuario);
+                    i2.putExtra("cambioContrasena", "si");
+                    startActivity(i2);
                 break;
             case R.id.action_cerrarSesion:
-                    Intent i = new Intent(SeleccionJuego.this, LoginActivity.class);
-                    startActivity(i);
+                    Intent i3 = new Intent(SeleccionJuego.this, LoginActivity.class);
+                    startActivity(i3);
                 break;
         }
         return super.onOptionsItemSelected(item);
