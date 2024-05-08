@@ -26,11 +26,9 @@ public class SeleccionJuego extends AppCompatActivity {
         usuario = recibo.getString("usuario");
 
         juego1.setOnClickListener(view -> {
-            /*
-            Intent i = new Intent(this, Memory.class);
+            Intent i = new Intent(this, FlappyBird.class);
             i.putExtra("usuario", usuario);
             startActivity(i);
-            */
         });
 
         juego2.setOnClickListener(view -> {
