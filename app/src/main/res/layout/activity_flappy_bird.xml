@@ -7,6 +7,10 @@
     android:background="@drawable/fondo2"
     tools:context=".FlappyBird">
 
+    <com.example.proyectofinaldam.FlappyBirdGame
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"

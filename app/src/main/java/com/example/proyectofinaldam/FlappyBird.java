@@ -1,15 +1,13 @@
 package com.example.proyectofinaldam;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ImageView;
+import android.util.DisplayMetrics;
+import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class FlappyBird extends AppCompatActivity {
-
-    ImageView btnInicio;
-
+    //ImageView btnInicio;
     bbddHelper helper;
     Bundle recibo;
     String usuario;
@@ -23,12 +21,19 @@ public class FlappyBird extends AppCompatActivity {
         recibo = getIntent().getExtras();
         usuario = recibo.getString("usuario");
 
-        btnInicio = findViewById(R.id.btnIncio);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        DisplayMetrics dm = new DisplayMetrics();
+        Constantes.ANCHO_PANTALLA = dm.widthPixels;
+        Constantes.ALTO_PANTALLA = dm.heightPixels;
 
+        //btnInicio = findViewById(R.id.btnIncio);
+
+        /*
         btnInicio.setOnClickListener(view -> {
             Intent i = new Intent(this, FlappyBirdGame.class);
             i.putExtra("usuario", usuario);
             startActivity(i);
         });
+        */
     }
 }

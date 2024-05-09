@@ -1,21 +1,47 @@
 package com.example.proyectofinaldam;
 
-import android.os.Bundle;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.os.Handler;
+import android.util.AttributeSet;
+import android.view.View;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.Nullable;
 
-public class FlappyBirdGame extends AppCompatActivity {
+import java.util.ArrayList;
 
-    bbddHelper helper;
-    Bundle recibo;
-    String usuario;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_flappy_bird_game);
+public class FlappyBirdGame extends View {
+    Bird bird;
+    Handler handler;
+    Runnable r;
 
-        helper = new bbddHelper(getApplicationContext());
-        recibo = getIntent().getExtras();
-        usuario = recibo.getString("usuario");
+    public FlappyBirdGame(Context context, @Nullable AttributeSet attrs) {
+        super(context, attrs);
+        bird = new Bird();
+
+        bird.setAncho(100 * Constantes.ANCHO_PANTALLA / 1080);
+        bird.setAlto(100 * Constantes.ALTO_PANTALLA / 1920);
+        bird.setX(100 * Constantes.ANCHO_PANTALLA / 1080);
+        bird.setY((int) (Constantes.ALTO_PANTALLA / 2 - bird.getAlto() / 2));
+
+        ArrayList<Bitmap> arrBit = new ArrayList<>();
+        arrBit.add(BitmapFactory.decodeResource(this.getResources(), R.drawable.flappybird));
+        bird.setArrBit(arrBit);
+
+        handler = new Handler();
+        r = new Runnable() {
+            @Override
+            public void run() {
+                invalidate();
+            }
+        };
+    }
+
+    public void draw(Canvas canvas) {
+        super.draw(canvas);
+        bird.draw(canvas);
+        handler.postDelayed(r, 10);
     }
 }
