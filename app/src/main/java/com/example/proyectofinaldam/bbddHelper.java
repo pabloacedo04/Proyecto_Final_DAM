@@ -99,7 +99,7 @@ public class bbddHelper extends SQLiteOpenHelper {
     public void cambiarContrasena(String usr, String nuevaContra){
         SQLiteDatabase bbdd = getWritableDatabase();
         if (bbdd!=null){
-            bbdd.execSQL("UPDATE T_USUARIOS SET PASS = '"+nuevaContra+"' WHERE USR= '"+usr+"'", null);
+            bbdd.execSQL("UPDATE T_USUARIOS SET PASS = '"+nuevaContra+"' WHERE USR= '"+usr+"'");
         }
     }
 }
