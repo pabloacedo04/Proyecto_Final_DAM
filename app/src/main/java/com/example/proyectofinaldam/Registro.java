@@ -48,7 +48,8 @@ public class Registro extends AppCompatActivity {
             }
             else if (contrasena.getText().toString().equals(contrasena2.getText().toString())){
                 if (cambioContra.equals("si")){
-                    Toast.makeText(this, "Cambiar contraseña", Toast.LENGTH_LONG).show();
+                    bbdd.cambiarContrasena(usr, contrasena.getText().toString());
+                    Toast.makeText(this, "Contraseña actualizada correctamente", Toast.LENGTH_LONG).show();
                 }
                 else {
                     if (!bbdd.existeUsuario(usuario.getText().toString(), this)) {

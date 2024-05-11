@@ -10,6 +10,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.List;
+
 public class SeleccionJuego extends AppCompatActivity {
     ImageButton juego1, juego2, juego3;
     String usuario;
@@ -52,9 +54,13 @@ public class SeleccionJuego extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        bbddHelper bbddHelper = new bbddHelper(getApplicationContext());
         switch (item.getItemId()){
             case R.id.action_puntuaciones:
-                    Toast.makeText(this, "Ver puntuaciones", Toast.LENGTH_SHORT).show();
+                /*
+                Intent i = new Intent(SeleccionJuego.this, Puntuaciones.class);
+                startActivity(i);
+                 */
                 break;
             case R.id.action_cambiarPass:
                     Intent i2 = new Intent(SeleccionJuego.this, Registro.class);

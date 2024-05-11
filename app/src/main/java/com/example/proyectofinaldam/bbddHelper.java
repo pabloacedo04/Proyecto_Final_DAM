@@ -5,6 +5,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class bbddHelper extends SQLiteOpenHelper {
     private static final int VERSION = 1;
     private static final String NOMBRE_BBDD = "proyecto.db";
@@ -80,4 +83,23 @@ public class bbddHelper extends SQLiteOpenHelper {
         }
     }
 
+    public List<Integer> devolverPuntuaciones(String usr, int juego){
+        SQLiteDatabase bbdd = getReadableDatabase();
+        List<Integer> listaPuntuaciones = new ArrayList<>();
+        Cursor cursor = bbdd.rawQuery("SELECT puntuacion FROM T_JUEGOS WHERE usr = '"+usr+"' and juego = "+juego+" order by puntuacion desc LIMIT 3", null);
+        if (cursor.moveToFirst()){
+            do{
+                listaPuntuaciones.add(cursor.getInt(0));
+            }
+            while (cursor.moveToNext());
+        }
+        return listaPuntuaciones;
+    }
+
+    public void cambiarContrasena(String usr, String nuevaContra){
+        SQLiteDatabase bbdd = getWritableDatabase();
+        if (bbdd!=null){
+            bbdd.execSQL("UPDATE T_USUARIOS SET PASS = '"+nuevaContra+"' WHERE USR= '"+usr+"'", null);
+        }
+    }
 }
