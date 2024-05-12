@@ -15,6 +15,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Objects;
 import java.util.Random;
 
 public class Sudoku extends AppCompatActivity {
@@ -26,8 +27,7 @@ public class Sudoku extends AppCompatActivity {
 
         public Celda(int valorInicial, Context contexto){
             numero = valorInicial;
-            if (numero!=0) numInicial = true;
-            else numInicial = false;
+            numInicial = numero != 0;
             btn = new Button(contexto);
             if (numInicial) btn.setText(String.valueOf(numero));
             else btn.setTextColor(Color.BLUE);
@@ -37,9 +37,14 @@ public class Sudoku extends AppCompatActivity {
                 if (numero>9) numero=1;
                 btn.setText(String.valueOf(numero));
                 if (terminado()){
-                    isRunning = false;
-                    Toast.makeText(Sudoku.this, "Has ganado!", Toast.LENGTH_SHORT).show();
-                    bbddHelper.agregarPuntuacion(usuario, 3, seconds);
+                    if(victoria()){
+                        isRunning = false;
+                        Toast.makeText(Sudoku.this, "Has ganado!", Toast.LENGTH_SHORT).show();
+                        bbddHelper.agregarPuntuacion(usuario, 3, seconds);
+                    }
+                    else{
+                        Toast.makeText(Sudoku.this, "Hay algún error", Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
         }
@@ -66,7 +71,7 @@ public class Sudoku extends AppCompatActivity {
         startTimer();
 
         recibo = getIntent().getExtras();
-        usuario = recibo.getString("usuario");
+        usuario = Objects.requireNonNull(recibo).getString("usuario");
 
         ej = new String[10];
         ej[0] = "? 5 4 3 ? 6 ? ? 2 "+
@@ -179,7 +184,7 @@ public class Sudoku extends AppCompatActivity {
             TableRow tr = new TableRow(this);
             for(int j = 0; j<9; j++){
                 String s = numeros[i*9 + j];
-                Character c = s.charAt(0);
+                char c = s.charAt(0);
                 tablero[i][j] = new Celda(c=='?'?0:c-'0',this);
                 tr.addView(tablero[i][j].btn);
             }
