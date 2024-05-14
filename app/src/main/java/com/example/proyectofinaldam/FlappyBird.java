@@ -8,23 +8,24 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class FlappyBird extends AppCompatActivity {
     //ImageView btnInicio;
-    bbddHelper helper;
-    Bundle recibo;
-    String usuario;
+    //bbddHelper helper;
+    //Bundle recibo;
+    //String usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_flappy_bird);
 
-        helper = new bbddHelper(getApplicationContext());
-        recibo = getIntent().getExtras();
-        usuario = recibo.getString("usuario");
+        //helper = new bbddHelper(getApplicationContext());
+        //recibo = getIntent().getExtras();
+        //usuario = recibo.getString("usuario");
 
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         DisplayMetrics dm = new DisplayMetrics();
         Constantes.ANCHO_PANTALLA = dm.widthPixels;
         Constantes.ALTO_PANTALLA = dm.heightPixels;
+
+        setContentView(R.layout.activity_flappy_bird);
 
         //btnInicio = findViewById(R.id.btnIncio);
 
