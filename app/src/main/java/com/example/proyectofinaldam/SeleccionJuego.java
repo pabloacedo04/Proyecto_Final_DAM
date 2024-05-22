@@ -5,12 +5,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.util.List;
 
 public class SeleccionJuego extends AppCompatActivity {
     ImageButton juego1, juego2, juego3;
@@ -28,7 +25,7 @@ public class SeleccionJuego extends AppCompatActivity {
         usuario = recibo.getString("usuario");
 
         juego1.setOnClickListener(view -> {
-            Intent i = new Intent(this, FlappyBird.class);
+            Intent i = new Intent(this, TresEnRayaLog.class);
             i.putExtra("usuario", usuario);
             startActivity(i);
         });
