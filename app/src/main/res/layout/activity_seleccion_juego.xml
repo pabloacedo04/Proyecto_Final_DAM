@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/morado">
 
     <TextView
         android:id="@+id/textView"
@@ -13,7 +14,8 @@
         android:layout_marginTop="16dp"
         android:layout_gravity="center"
         android:text="Selección de juego"
-        android:textColor="@color/lightblue"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         android:textSize="28sp" />
 
     <ImageButton
@@ -22,7 +24,11 @@
         android:layout_height="150dp"
         android:layout_gravity="center"
         android:layout_marginTop="16dp"
-        tools:ignore="SpeakableTextPresentCheck"></ImageButton>
+        android:src="@drawable/tresenraya"
+        android:scaleType="centerInside"
+        android:padding="20dp"
+        tools:ignore="SpeakableTextPresentCheck" />
+
 
     <TextView
         android:layout_width="match_parent"
