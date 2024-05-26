@@ -54,10 +54,9 @@ public class SeleccionJuego extends AppCompatActivity {
         bbddHelper bbddHelper = new bbddHelper(getApplicationContext());
         switch (item.getItemId()){
             case R.id.action_puntuaciones:
-                /*
                 Intent i = new Intent(SeleccionJuego.this, Puntuaciones.class);
+                i.putExtra("usuario", usuario);
                 startActivity(i);
-                 */
                 break;
             case R.id.action_cambiarPass:
                     Intent i2 = new Intent(SeleccionJuego.this, Registro.class);
