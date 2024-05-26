@@ -1,7 +1,6 @@
 package com.example.proyectofinaldam;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -63,90 +62,58 @@ public class TresEnRayaGame extends AppCompatActivity {
 
     private void prepararClickListeners() {
 
-        btnreiniciar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                reiniciar();
-            }
-        });
-        cuadrado1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (estaUsada(0)) {
-                    performAction(cuadrado1, 0);
-                }
+        btnreiniciar.setOnClickListener(view -> reiniciar());
+        cuadrado1.setOnClickListener(view -> {
+            if (estaUsada(0)) {
+                performAction(cuadrado1, 0);
             }
         });
 
-        cuadrado2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (estaUsada(1)) {
-                    performAction(cuadrado2, 1);
-                }
+        cuadrado2.setOnClickListener(view -> {
+            if (estaUsada(1)) {
+                performAction(cuadrado2, 1);
             }
         });
 
-        cuadrado3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (estaUsada(2)) {
-                    performAction(cuadrado3, 2);
-                }
+        cuadrado3.setOnClickListener(view -> {
+            if (estaUsada(2)) {
+                performAction(cuadrado3, 2);
             }
         });
 
-        cuadrado4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (estaUsada(3)) {
-                    performAction(cuadrado4, 3);
-                }
+        cuadrado4.setOnClickListener(view -> {
+            if (estaUsada(3)) {
+                performAction(cuadrado4, 3);
             }
         });
 
-        cuadrado5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (estaUsada(4)) {
-                    performAction(cuadrado5, 4);
-                }
+        cuadrado5.setOnClickListener(view -> {
+            if (estaUsada(4)) {
+                performAction(cuadrado5, 4);
             }
         });
 
-        cuadrado6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (estaUsada(5)) {
-                    performAction(cuadrado6, 5);
-                }
+        cuadrado6.setOnClickListener(view -> {
+            if (estaUsada(5)) {
+                performAction(cuadrado6, 5);
             }
         });
 
-        cuadrado7.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (estaUsada(6)) {
-                    performAction(cuadrado7, 6);
-                }
+        cuadrado7.setOnClickListener(view -> {
+            if (estaUsada(6)) {
+                performAction(cuadrado7, 6);
             }
         });
 
-        cuadrado8.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (estaUsada(7)) {
-                    performAction(cuadrado8, 7);
-                }
+        cuadrado8.setOnClickListener(view -> {
+            if (estaUsada(7)) {
+                performAction(cuadrado8, 7);
             }
         });
 
-        cuadrado9.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (estaUsada(8)) {
-                    performAction(cuadrado9, 8);
-                }
+        cuadrado9.setOnClickListener(view -> {
+            if (estaUsada(8)) {
+                performAction(cuadrado9, 8);
             }
         });
     }

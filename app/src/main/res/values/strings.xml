@@ -2,4 +2,15 @@
     <string name="app_name">Arcade Adventure</string>
     <string name="boton_reiniciar">Reiniciar</string>
     <string name="boton_cerrar">Salir</string>
+    <string name="jugador1">jugador1</string>
+    <string name="jugador2">jugador2</string>
+    <string name="reiniciar">Reiniciar</string>
+    <string name="introduzca_sus_nombres">INTRODUZCA SUS NOMBRES</string>
+    <string name="nombre_del_jugador_1">Nombre del jugador 1</string>
+    <string name="nombre_del_jugador_2">Nombre del jugador 2</string>
+    <string name="iniciar">INICIAR</string>
+    <string name="selecci_n_de_juego">Selección de juego</string>
+    <string name="juego_1">Juego 1</string>
+    <string name="memory">Memory</string>
+    <string name="sudoku">Sudoku</string>
 </resources>

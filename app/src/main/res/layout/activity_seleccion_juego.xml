@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_gravity="center"
-        android:text="Selección de juego"
+        android:text="@string/selecci_n_de_juego"
         android:textColor="@color/black"
         android:textStyle="bold"
         android:textSize="28sp" />
@@ -27,13 +26,13 @@
         android:src="@drawable/tresenraya"
         android:scaleType="centerInside"
         android:padding="20dp"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Juego 1"
+        android:text="@string/juego_1"
         android:textAlignment="center"
         android:textSize="24sp"
         android:textColor="@color/black">
@@ -46,12 +45,12 @@
         android:layout_gravity="center"
         android:layout_marginTop="16dp"
         android:src="@drawable/memory"
-        tools:ignore="SpeakableTextPresentCheck"></ImageButton>
+        tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Memory"
+        android:text="@string/memory"
         android:textAlignment="center"
         android:textSize="24sp"
         android:textColor="@color/black">
@@ -64,12 +63,12 @@
         android:layout_gravity="center"
         android:layout_marginTop="16dp"
         android:src="@drawable/sudoku"
-        tools:ignore="SpeakableTextPresentCheck"></ImageButton>
+        tools:ignore="ContentDescription,SpeakableTextPresentCheck,ImageContrastCheck" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sudoku"
+        android:text="@string/sudoku"
         android:textAlignment="center"
         android:textSize="24sp"
         android:textColor="@color/black">

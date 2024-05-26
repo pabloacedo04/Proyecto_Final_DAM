@@ -2,6 +2,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -19,14 +20,15 @@
             android:orientation="vertical"
             android:layout_gravity="center_horizontal"
             android:padding="24dp">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="INTRODUZCA SUS NOMBRES"
+                android:text="@string/introduzca_sus_nombres"
                 android:textAlignment="center"
+                android:textColor="#448AFF"
                 android:textSize="36sp"
-                android:textStyle="bold"
-                android:textColor="@color/morado"/>
+                android:textStyle="bold" />
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -35,9 +37,10 @@
                 android:padding="8dp"
                 android:maxLines="1"
                 android:textStyle="italic"
-                android:hint="Nombre del jugador 1"
+                android:hint="@string/nombre_del_jugador_1"
                 android:textColor="@color/morado"
-                android:drawablePadding="8dp"/>
+                android:drawablePadding="8dp"
+                tools:ignore="Autofill,TextFields,VisualLintTextFieldSize" />
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -46,17 +49,19 @@
                 android:padding="8dp"
                 android:maxLines="1"
                 android:textStyle="italic"
-                android:hint="Nombre del jugador 2"
+                android:hint="@string/nombre_del_jugador_2"
                 android:textColor="@color/morado"
-                android:drawablePadding="8dp"/>
+                android:drawablePadding="8dp"
+                tools:ignore="Autofill,TextFields,VisualLintTextFieldSize" />
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="30dp"
                 android:id="@+id/iniciobtn"
-                android:text="INICIAR"
+                android:text="@string/iniciar"
                 android:textSize="18sp"
-                app:cornerRadius = "20dp"/>
+                app:cornerRadius = "20dp"
+                tools:ignore="VisualLintButtonSize" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </RelativeLayout>
