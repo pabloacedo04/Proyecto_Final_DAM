@@ -13,6 +13,6 @@
     <string name="juego_1">Juego 1</string>
     <string name="memory">Memory</string>
     <string name="sudoku">Sudoku</string>
-    <string name="puntuaciones_memory">PUNTUACIONES MEMORY</string>
-    <string name="puntuaciones_sudoku">PUNTUACIONES SUDOKU</string>
+    <string name="puntuaciones_memory">MEMORY</string>
+    <string name="puntuaciones_sudoku">SUDOKU</string>
 </resources>

@@ -10,7 +10,7 @@
         android:id="@+id/cardView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="30dp"
+        android:layout_margin="15dp"
         android:layout_alignParentTop="true"
         app:cardCornerRadius="30dp"
         app:cardElevation="20dp">
@@ -26,7 +26,7 @@
                 android:text="@string/puntuaciones_memory"
                 android:textAlignment="center"
                 android:textColor="#448AFF"
-                android:textSize="36sp"
+                android:textSize="32sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -36,7 +36,7 @@
                 android:text=""
                 android:textAlignment="center"
                 android:textColor="#448AFF"
-                android:textSize="36sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -46,7 +46,7 @@
                 android:text=""
                 android:textAlignment="center"
                 android:textColor="#448AFF"
-                android:textSize="36sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -56,7 +56,7 @@
                 android:text=""
                 android:textAlignment="center"
                 android:textColor="#448AFF"
-                android:textSize="36sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -66,7 +66,7 @@
         android:id="@+id/cardView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="30dp"
+        android:layout_margin="15dp"
         android:layout_below="@id/cardView1"
         app:cardCornerRadius="30dp"
         app:cardElevation="20dp">
@@ -92,7 +92,7 @@
                 android:text=""
                 android:textAlignment="center"
                 android:textColor="#448AFF"
-                android:textSize="36sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -102,7 +102,7 @@
                 android:text=""
                 android:textAlignment="center"
                 android:textColor="#448AFF"
-                android:textSize="36sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -112,7 +112,7 @@
                 android:text=""
                 android:textAlignment="center"
                 android:textColor="#448AFF"
-                android:textSize="36sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
