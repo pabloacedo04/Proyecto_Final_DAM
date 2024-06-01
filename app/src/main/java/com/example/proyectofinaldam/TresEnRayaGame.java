@@ -17,6 +17,7 @@ public class TresEnRayaGame extends AppCompatActivity {
     private int[] posiciones = {0, 0, 0, 0, 0, 0, 0, 0, 0};
     private int turno = 1;
     private int totalCuadradosSeleccionados = 1;
+    private boolean juegoTerminado = false;
 
     private TextView jugador1Nombre, jugador2Nombre;
     private ImageView cuadrado1, cuadrado2, cuadrado3, cuadrado4, cuadrado5, cuadrado6, cuadrado7, cuadrado8, cuadrado9;
@@ -61,64 +62,68 @@ public class TresEnRayaGame extends AppCompatActivity {
     }
 
     private void prepararClickListeners() {
-
         btnreiniciar.setOnClickListener(view -> reiniciar());
+
         cuadrado1.setOnClickListener(view -> {
             if (estaUsada(0)) {
-                performAction(cuadrado1, 0);
+                realizarCambio(cuadrado1, 0);
             }
         });
 
         cuadrado2.setOnClickListener(view -> {
             if (estaUsada(1)) {
-                performAction(cuadrado2, 1);
+                realizarCambio(cuadrado2, 1);
             }
         });
 
         cuadrado3.setOnClickListener(view -> {
             if (estaUsada(2)) {
-                performAction(cuadrado3, 2);
+                realizarCambio(cuadrado3, 2);
             }
         });
 
         cuadrado4.setOnClickListener(view -> {
             if (estaUsada(3)) {
-                performAction(cuadrado4, 3);
+                realizarCambio(cuadrado4, 3);
             }
         });
 
         cuadrado5.setOnClickListener(view -> {
             if (estaUsada(4)) {
-                performAction(cuadrado5, 4);
+                realizarCambio(cuadrado5, 4);
             }
         });
 
         cuadrado6.setOnClickListener(view -> {
             if (estaUsada(5)) {
-                performAction(cuadrado6, 5);
+                realizarCambio(cuadrado6, 5);
             }
         });
 
         cuadrado7.setOnClickListener(view -> {
             if (estaUsada(6)) {
-                performAction(cuadrado7, 6);
+                realizarCambio(cuadrado7, 6);
             }
         });
 
         cuadrado8.setOnClickListener(view -> {
             if (estaUsada(7)) {
-                performAction(cuadrado8, 7);
+                realizarCambio(cuadrado8, 7);
             }
         });
 
         cuadrado9.setOnClickListener(view -> {
             if (estaUsada(8)) {
-                performAction(cuadrado9, 8);
+                realizarCambio(cuadrado9, 8);
             }
         });
     }
 
-    private void performAction(ImageView cuadrado, int cuadradoSeleccionado) {
+    private void realizarCambio(ImageView cuadrado, int cuadradoSeleccionado) {
+        if (juegoTerminado) {
+            return;
+        }
+
         posiciones[cuadradoSeleccionado] = turno;
 
         if (turno == 1) {
@@ -126,12 +131,12 @@ public class TresEnRayaGame extends AppCompatActivity {
             if (comprobar()) {
                 Toast toast = Toast.makeText(getApplicationContext(), jugador1Nombre.getText().toString()+" ha ganado!!", Toast.LENGTH_LONG);
                 toast.show();
-            }
-            else if (totalCuadradosSeleccionados == 9) {
+                juegoTerminado = true;
+            } else if (totalCuadradosSeleccionados == 9) {
                 Toast toast = Toast.makeText(getApplicationContext(), "Empate!!", Toast.LENGTH_LONG);
                 toast.show();
-            }
-            else {
+                juegoTerminado = true;
+            } else {
                 cambiarTurno(2);
                 totalCuadradosSeleccionados++;
             }
@@ -140,12 +145,12 @@ public class TresEnRayaGame extends AppCompatActivity {
             if (comprobar()) {
                 Toast toast = Toast.makeText(getApplicationContext(), jugador2Nombre.getText().toString()+" ha ganado!!", Toast.LENGTH_LONG);
                 toast.show();
-            }
-            else if (totalCuadradosSeleccionados == 9) {
+                juegoTerminado = true;
+            } else if (totalCuadradosSeleccionados == 9) {
                 Toast toast = Toast.makeText(getApplicationContext(), "Empate!!", Toast.LENGTH_LONG);
                 toast.show();
-            }
-            else {
+                juegoTerminado = true;
+            } else {
                 cambiarTurno(1);
                 totalCuadradosSeleccionados++;
             }
@@ -178,6 +183,7 @@ public class TresEnRayaGame extends AppCompatActivity {
         posiciones = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
         turno = 1;
         totalCuadradosSeleccionados = 1;
+        juegoTerminado = false;
 
         // Restablecer imágenes a su estado inicial
         cuadrado1.setImageResource(R.drawable.blanco);
