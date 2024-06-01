@@ -1,7 +1,5 @@
 package com.example.proyectofinaldam;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
@@ -15,6 +13,8 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Objects;
 import java.util.Random;
@@ -181,16 +181,28 @@ public class Sudoku extends AppCompatActivity {
 
         tablero = new Celda[9][9];
         tl = new TableLayout(this);
-        for (int i = 0; i<9; i++){
+
+        for (int i = 0; i < 9; i++) {
             TableRow tr = new TableRow(this);
-            for(int j = 0; j<9; j++){
-                String s = numeros[i*9 + j];
+            for (int j = 0; j < 9; j++) {
+                String s = numeros[i * 9 + j];
                 char c = s.charAt(0);
-                tablero[i][j] = new Celda(c=='?'?0:c-'0',this);
+                tablero[i][j] = new Celda(c == '?' ? 0 : c - '0', this);
+                TableRow.LayoutParams params = new TableRow.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1);
+                if ((j + 1) % 3 == 0 && j < 8) {
+                    params.rightMargin = 30;
+                }
+
+                if ((i + 1) % 3 == 0 && i < 8) {
+                    params.bottomMargin = 30;
+                }
+                tablero[i][j].btn.setLayoutParams(params);
                 tr.addView(tablero[i][j].btn);
             }
             tl.addView(tr);
         }
+
+
 
         tl.setShrinkAllColumns(true);
         tl.setStretchAllColumns(true);
@@ -313,3 +325,4 @@ public class Sudoku extends AppCompatActivity {
         });
     }
 }
+
