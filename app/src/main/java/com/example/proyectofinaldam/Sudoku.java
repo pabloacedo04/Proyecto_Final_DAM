@@ -253,6 +253,7 @@ public class Sudoku extends AppCompatActivity {
         linearLayout.addView(btnSeguir);
         linearLayout.setOrientation(LinearLayout.VERTICAL);
         linearLayout.setPadding(0, 100, 0, 0);
+        linearLayout.setBackgroundColor(getResources().getColor(R.color.morado));
         setContentView(linearLayout);
     }
 
