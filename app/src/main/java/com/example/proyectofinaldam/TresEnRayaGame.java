@@ -1,5 +1,6 @@
 package com.example.proyectofinaldam;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -21,8 +22,9 @@ public class TresEnRayaGame extends AppCompatActivity {
 
     private TextView jugador1Nombre, jugador2Nombre;
     private ImageView cuadrado1, cuadrado2, cuadrado3, cuadrado4, cuadrado5, cuadrado6, cuadrado7, cuadrado8, cuadrado9;
-    private Button btnreiniciar;
+    private Button btnreiniciar, btnSalir;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +39,8 @@ public class TresEnRayaGame extends AppCompatActivity {
         listaCombinaciones.add(new int[]{2, 4, 6});
         listaCombinaciones.add(new int[]{0, 4, 8});
 
-        btnreiniciar = findViewById(R.id.btnReinicio);
+        btnreiniciar = findViewById(R.id.botonJuegoReiniciar);
+        btnSalir = findViewById(R.id.botonJuegoSalir);
 
         // Inicializar vistas
         jugador1Nombre = findViewById(R.id.jugador1nombre);
@@ -63,6 +66,8 @@ public class TresEnRayaGame extends AppCompatActivity {
 
     private void prepararClickListeners() {
         btnreiniciar.setOnClickListener(view -> reiniciar());
+        btnSalir.setOnClickListener(view -> finish());
+
 
         cuadrado1.setOnClickListener(view -> {
             if (estaUsada(0)) {
