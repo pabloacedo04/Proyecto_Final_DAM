@@ -1,5 +1,6 @@
 package com.example.proyectofinaldam;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -22,7 +23,9 @@ public class SeleccionJuego extends AppCompatActivity {
         juego3 = findViewById(R.id.juego3);
 
         Bundle recibo = getIntent().getExtras();
-        usuario = recibo.getString("usuario");
+        if (recibo != null) {
+            usuario = recibo.getString("usuario");
+        }
 
         juego1.setOnClickListener(view -> {
             Intent i = new Intent(this, TresEnRayaLog.class);
@@ -49,9 +52,9 @@ public class SeleccionJuego extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        bbddHelper bbddHelper = new bbddHelper(getApplicationContext());
         switch (item.getItemId()){
             case R.id.action_puntuaciones:
                 Intent i = new Intent(SeleccionJuego.this, Puntuaciones.class);

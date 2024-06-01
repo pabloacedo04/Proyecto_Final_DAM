@@ -1,9 +1,9 @@
 package com.example.proyectofinaldam;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -34,7 +34,9 @@ public class Memory extends Activity {
         init();
         helper = new bbddHelper(getApplicationContext());
         recibo = getIntent().getExtras();
-        usuario = recibo.getString("usuario");
+        if (recibo != null) {
+            usuario = recibo.getString("usuario");
+        }
     }
 
     private void cargarTablero(){
@@ -76,21 +78,12 @@ public class Memory extends Activity {
     private void cargarBotones(){
         botonReiniciar = findViewById(R.id.botonJuegoReiniciar);
         botonSalir = findViewById(R.id.botonJuegoSalir);
-        botonReiniciar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                init();
-            }
-        });
+        botonReiniciar.setOnClickListener(v -> init());
 
-        botonSalir.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        botonSalir.setOnClickListener(v -> finish());
     }
 
+    @SuppressLint("SetTextI18n")
     private void cargarTexto(){
         textoPuntuacion = findViewById(R.id.texto_puntuacion);
         puntuacion = 0;
@@ -113,7 +106,7 @@ public class Memory extends Activity {
     }
 
     private ArrayList<Integer> barajar(int longitud){
-        ArrayList<Integer> result = new ArrayList<Integer>();
+        ArrayList<Integer> result = new ArrayList<>();
         for(int i=0; i<longitud*2; i++){
             result.add(i % longitud);
         }
@@ -121,6 +114,7 @@ public class Memory extends Activity {
         return result;
     }
 
+    @SuppressLint("SetTextI18n")
     private void comprobar(int i, final ImageButton imgb){
         if(primero == null){
             primero = imgb;
@@ -146,20 +140,17 @@ public class Memory extends Activity {
                     helper.agregarPuntuacion(usuario, 2, puntuacion);
                 }
             } else {
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        primero.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                        primero.setImageResource(fondo);
-                        primero.setEnabled(true);
-                        imgb.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                        imgb.setImageResource(fondo);
-                        imgb.setEnabled(true);
-                        bloqueo = false;
-                        primero = null;
-                        puntuacion--;
-                        textoPuntuacion.setText("Puntuación: " + puntuacion);
-                    }
+                handler.postDelayed(() -> {
+                    primero.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                    primero.setImageResource(fondo);
+                    primero.setEnabled(true);
+                    imgb.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                    imgb.setImageResource(fondo);
+                    imgb.setEnabled(true);
+                    bloqueo = false;
+                    primero = null;
+                    puntuacion--;
+                    textoPuntuacion.setText("Puntuación: " + puntuacion);
                 }, 1000);
             }
         }
@@ -175,24 +166,18 @@ public class Memory extends Activity {
             tablero[i].setScaleType(ImageView.ScaleType.CENTER_CROP);
             tablero[i].setImageResource(imagenes[arrayDesordenado.get(i)]);
         }
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                for(int i=0; i<tablero.length; i++){
-                    tablero[i].setScaleType(ImageView.ScaleType.CENTER_CROP);
-                    tablero[i].setImageResource(fondo);
-                }
+        handler.postDelayed(() -> {
+            for (ImageButton imageButton : tablero) {
+                imageButton.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                imageButton.setImageResource(fondo);
             }
         }, 1500);
         for(int i=0; i<tablero.length; i++) {
             final int j = i;
             tablero[i].setEnabled(true);
-            tablero[i].setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if(!bloqueo)
-                        comprobar(j, tablero[j]);
-                }
+            tablero[i].setOnClickListener(v -> {
+                if(!bloqueo)
+                    comprobar(j, tablero[j]);
             });
         }
 

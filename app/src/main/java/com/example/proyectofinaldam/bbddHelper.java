@@ -1,5 +1,6 @@
 package com.example.proyectofinaldam;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -48,12 +49,7 @@ public class bbddHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = bbddHelper.getWritableDatabase();
 
         Cursor busqueda = db.rawQuery("SELECT * FROM t_usuarios where usr = '"+usr+"' LIMIT 1", null);
-        if (busqueda.moveToFirst()){
-            vuelta = true;
-        }
-        else{
-            vuelta = false;
-        }
+        vuelta = busqueda.moveToFirst();
         busqueda.close();
         return vuelta;
     }
@@ -64,7 +60,7 @@ public class bbddHelper extends SQLiteOpenHelper {
         bbddHelper bbddHelper = new bbddHelper(context);
         SQLiteDatabase db = bbddHelper.getWritableDatabase();
 
-        Cursor busqueda = db.rawQuery("SELECT * FROM t_usuarios where usr = '"+usr+"' LIMIT 1", null);
+        @SuppressLint("Recycle") Cursor busqueda = db.rawQuery("SELECT * FROM t_usuarios where usr = '"+usr+"' LIMIT 1", null);
 
         if (busqueda.moveToFirst()){
             usuario.setUsr(busqueda.getString(0));
@@ -86,7 +82,7 @@ public class bbddHelper extends SQLiteOpenHelper {
     public List<Integer> devolverPuntuaciones(String usr, int juego){
         SQLiteDatabase bbdd = getReadableDatabase();
         List<Integer> listaPuntuaciones = new ArrayList<>();
-        Cursor cursor = bbdd.rawQuery("SELECT puntuacion FROM T_JUEGOS WHERE usr = '"+usr+"' and juego = "+juego+" order by puntuacion desc LIMIT 3", null);
+        @SuppressLint("Recycle") Cursor cursor = bbdd.rawQuery("SELECT puntuacion FROM T_JUEGOS WHERE usr = '"+usr+"' and juego = "+juego+" order by puntuacion desc LIMIT 3", null);
         if (cursor.moveToFirst()){
             do{
                 listaPuntuaciones.add(cursor.getInt(0));
