@@ -27,5 +27,6 @@ public class TresEnRayaLog extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
 }
