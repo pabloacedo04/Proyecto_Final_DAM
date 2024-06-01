@@ -2,6 +2,7 @@ package com.example.proyectofinaldam;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -64,10 +65,10 @@ public class Sudoku extends AppCompatActivity {
     String usuario;
 
     int num;
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sudoku);
         startTimer();
 
         recibo = getIntent().getExtras();
@@ -270,24 +271,24 @@ public class Sudoku extends AppCompatActivity {
             for (int j = j1; j<j2; j++){
                 int valor = tablero[i][j].numero;
                 if (valor!=0){
-                    if (comprobado[valor]) return false;
+                    if (comprobado[valor]) return true;
                     comprobado[valor] = true;
                 }
             }
         }
-        return true;
+        return false;
     }
 
     public boolean victoria(){
         for(int i=0; i <9; i++){
-            if (!correcto(i, 0, i+1, 9)) return false;
+            if (correcto(i, 0, i + 1, 9)) return false;
         }
         for(int j=0; j<9; j++){
-            if (!correcto(0, j, 9, j+1)) return false;
+            if (correcto(0, j, 9, j + 1)) return false;
         }
         for (int i=0; i<3; i++){
             for (int j=0; j<3; j++){
-                if (!correcto(3*i, 3*j, 3*i+3, 3*j+3)) return false;
+                if (correcto(3 * i, 3 * j, 3 * i + 3, 3 * j + 3)) return false;
             }
         }
         return true;
@@ -297,6 +298,7 @@ public class Sudoku extends AppCompatActivity {
         isRunning = true;
         final Handler handler = new Handler();
         handler.post(new Runnable() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void run() {
                 if (isRunning) {

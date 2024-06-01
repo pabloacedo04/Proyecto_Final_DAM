@@ -1,5 +1,6 @@
 package com.example.proyectofinaldam;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -9,6 +10,7 @@ import java.util.List;
 
 public class Puntuaciones extends AppCompatActivity {
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,8 +26,11 @@ public class Puntuaciones extends AppCompatActivity {
         TextView sudoku3 = findViewById(R.id.sudokuview3);
         
         Bundle recibo = getIntent().getExtras();
-        String usuario = recibo.getString("usuario");
-        
+        String usuario = null;
+        if (recibo != null) {
+            usuario = recibo.getString("usuario");
+        }
+
         List<Integer> ptsMemory = bbdd.devolverPuntuaciones(usuario, 2);
         List<Integer> ptsSudoku = bbdd.devolverPuntuaciones(usuario, 3);
 

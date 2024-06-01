@@ -6,14 +6,6 @@ public class Usuario {
     public Usuario(){
 
     }
-    public Usuario(String usr, String contrasena){
-        this.usr = usr;
-        this.contrasena = contrasena;
-    }
-
-    public String getUsr(){
-        return this.usr;
-    }
 
     public String getContrasena(){
         return this.contrasena;
