@@ -1,7 +1,5 @@
 package com.example.proyectofinaldam;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
@@ -15,6 +13,8 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Objects;
 import java.util.Random;
@@ -181,20 +181,32 @@ public class Sudoku extends AppCompatActivity {
 
         tablero = new Celda[9][9];
         tl = new TableLayout(this);
-        for (int i = 0; i<9; i++){
+
+        for (int i = 0; i < 9; i++) {
             TableRow tr = new TableRow(this);
-            for(int j = 0; j<9; j++){
-                String s = numeros[i*9 + j];
+            for (int j = 0; j < 9; j++) {
+                String s = numeros[i * 9 + j];
                 char c = s.charAt(0);
-                tablero[i][j] = new Celda(c=='?'?0:c-'0',this);
+                tablero[i][j] = new Celda(c == '?' ? 0 : c - '0', this);
+                TableRow.LayoutParams params = new TableRow.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1);
+                if ((j + 1) % 3 == 0 && j < 8) {
+                    params.rightMargin = 30;
+                }
+
+                if ((i + 1) % 3 == 0 && i < 8) {
+                    params.bottomMargin = 30;
+                }
+                tablero[i][j].btn.setLayoutParams(params);
                 tr.addView(tablero[i][j].btn);
             }
             tl.addView(tr);
         }
 
+
+
         tl.setShrinkAllColumns(true);
         tl.setStretchAllColumns(true);
-        tl.setPadding(0,40,0,30);
+        tl.setPadding(0,20,0,10);
 
         cuentaSegundos = new TextView(this);
         cuentaSegundos.setTextColor(Color.RED);
@@ -240,7 +252,7 @@ public class Sudoku extends AppCompatActivity {
                 ViewGroup.LayoutParams.WRAP_CONTENT
         );
         layoutParams.gravity = Gravity.CENTER_HORIZONTAL;
-        layoutParams.topMargin = 30;
+        layoutParams.topMargin = 20;
 
         btnPausar.setLayoutParams(layoutParams);
         btnSeguir.setLayoutParams(layoutParams);
@@ -252,7 +264,7 @@ public class Sudoku extends AppCompatActivity {
         linearLayout.addView(btnPausar);
         linearLayout.addView(btnSeguir);
         linearLayout.setOrientation(LinearLayout.VERTICAL);
-        linearLayout.setPadding(0, 100, 0, 0);
+        linearLayout.setPadding(0, 50, 0, 0);
         linearLayout.setBackgroundColor(getResources().getColor(R.color.morado));
         setContentView(linearLayout);
     }
@@ -313,3 +325,4 @@ public class Sudoku extends AppCompatActivity {
         });
     }
 }
+
